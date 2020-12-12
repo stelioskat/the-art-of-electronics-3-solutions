@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage{taoes}
+
+\begin{document}
+\title{Solutions for Chapter 1}
+
+    \ex{1.30}
+    $V_\out$ is the voltage at the output of the impedance voltage divider. We know that $Z_R = R$ and $Z_C = \frac{1}{j\omega C}$. So we have 
+    \[V_\out = \frac{Z_C}{Z_R + Z_C} V_\in = \frac{\frac{1}{j \omega C}}{R + \frac{1}{j \omega C}} V_\in = \frac{1}{1 + j \omega R C} V_\in\]
+    The magnitude of this expression follows:
+    \[|V_\out| = \sqrt{V_\out V_\out^*} = \frac{1}{\sqrt{1 + \omega^2R^2C^2}}V_\in\]
+    where $V_\out^*$ is the complex conjugate of $V_\out$
+    
+    \ex{1.37}
+    The Norton equivalent circuit can be found by measuring $I_\short$ and $V_\open$:
+    
+    \[I_\Norton = I_\short = \frac{10\V}{10\k\Omega} = \sol{1\m\A}\] 
+    
+    and since $V_\open = 5\V$, we have
+    
+    \[R_\Norton = \frac{5\V}{1\m\A} = \sol{5\k\Omega}\]
+    
+\end{document}

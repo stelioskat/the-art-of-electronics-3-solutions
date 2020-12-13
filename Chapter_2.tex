@@ -30,4 +30,12 @@
 	To estimate the minimum $\beta_3$, we need first to find the maximum (worst-case) collector current for which $Q_3$ should still be in saturation. For this we can assume a $0\V$ drop across C and $Q_3$ while the current travels through the parallel connected resistors $R_2||R_3$.
 	\[I_{C_3,max} = \frac{V_{CC}}{R_2||R_3} = 5.5\m\A\]
 	\[\Rightarrow \beta_{3,min} = \frac{I_{C_3,max}}{I_{B_3}} = \frac{5.5\m\A}{\frac{(4.18\V - 0.6\V)} {20\k\Ohm}} \approx \sol{31}\]
+	
+	\ex{2.4}
+	
+	By using KCL and the fact that the transistor is in the active region we get
+	\[i_E = i_C + i_B = (\beta + 1) * i_B = (\beta + 1) \frac{v_B}{Z_{source}}\]
+	For small signals $Z_\out = \frac{v_E}{i_E} = \frac{v_B}{i_E}$. Thus:
+	\[ \sol{Z_\out = \frac{v_B}{(\beta + 1)\frac{v_B}{Z_{source}}} = \frac{Z_{source}}{\beta +1}}\qquad q.e.d.\]
+	Note: In practice one will often see $Z_\out \approx \frac{Z_{source}}{\beta}$. When $\beta \approx 100$ the "$+ 1$" part is often being ignored to simplify calculations.
 \end{document}

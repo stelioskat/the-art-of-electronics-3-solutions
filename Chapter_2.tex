@@ -23,4 +23,11 @@
 	\[\Rightarrow\]
 	\[t_1 = - R C*ln(0.47) \approx \sol{0.76 * R_3 C_1}\]
 	
+	\ex{2.3}
+	
+	The output voltage is reduced due to the $R_4 - R_5$ voltage divider
+	\[V_\out = \frac{R_5}{R_4 + R_5} * (V_{CC} - 0.6\V) \approx \sol{4.18\V}\]
+	To estimate the minimum $\beta_3$, we need first to find the maximum (worst-case) collector current for which $Q_3$ is should still be in saturation. For this we can assume a $0\V$ drop across C and $Q_3$ while the current travels through the parallel connected resistors $R_2||R_3$.
+	\[I_{C_3,max} = \frac{V_{CC}}{R_2||R_3} = 5.5\m\A\]
+	\[\Rightarrow \beta_{3,min} = \frac{I_{C_3,max}}{I_{B_3}} = \frac{5.5\m\A}{(4.18\V - 0.6\V) * 20\k\Ohm} \approx \sol{31}\]
 \end{document}

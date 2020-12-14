@@ -1,10 +1,6 @@
-\documentclass{article}
-\usepackage{taoes}
+\section{Bipolar Transistors}
 
-\begin{document}
-\title{Solutions for Chapter 2}
-
-	\ex{2.1}
+\ex{2.1}
 	We assume a forward voltage for the LED of 1.5\V. Then for $I_{LED}$ we have
 	\[I_{LED} = \frac{V_R}{R} = \frac{3.3\V - 1.5\V}{330\Ohm} \approx \sol{5.5\m\A}\]
 	To estimate the $\beta_{min}$ we need the current entering the base
@@ -12,7 +8,7 @@
 	Thus
 	\[\beta_{min} \geq \frac{I_{LED}}{I_B} = \sol{20}\]
 	
-	\ex{2.2}
+\ex{2.2}
 	
 	\tans{NOTE: According to the errata $0.63$ should be replaced by $0.76$ and $63\u\sec$ by $76\u\sec$.}
 	\\\\
@@ -21,9 +17,9 @@
 	set $V_C(t_1) = 0.53 * V_f$
 	\[0.53 = 1 - e^{-\frac{t_1}{R_3 C_1}}\]
 	\[\Rightarrow\]
-	\[t_1 = - R C*ln(0.47) \approx \sol{0.76 * R_3 C_1}\]
+	\[t_1 = - R_3 C_1*ln(0.47) \approx \sol{0.76 * R_3 C_1}\]
 	
-	\ex{2.3}
+\ex{2.3}
 	
 	The output voltage is reduced due to the $R_4 - R_5$ voltage divider
 	\[V_\out = \frac{R_5}{R_4 + R_5} * (V_{CC} - 0.6\V) \approx \sol{4.18\V}\]
@@ -31,11 +27,10 @@
 	\[I_{C_3,max} = \frac{V_{CC}}{R_2||R_3} = 5.5\m\A\]
 	\[\Rightarrow \beta_{3,min} = \frac{I_{C_3,max}}{I_{B_3}} = \frac{5.5\m\A}{\frac{(4.18\V - 0.6\V)} {20\k\Ohm}} \approx \sol{31}\]
 	
-	\ex{2.4}
+\ex{2.4}
 	
 	By using KCL and the fact that the transistor is in the active region we get
 	\[i_E = i_C + i_B = (\beta + 1) * i_B = (\beta + 1) \frac{v_B}{Z_{source}}\]
 	For small signals $Z_\out = \frac{v_E}{i_E} = \frac{v_B}{i_E}$. Thus:
 	\[ \sol{Z_\out = \frac{v_B}{(\beta + 1)\frac{v_B}{Z_{source}}} = \frac{Z_{source}}{\beta +1}}\qquad q.e.d.\]
 	Note: In practice one will often see $Z_\out \approx \frac{Z_{source}}{\beta}$. When $\beta \approx 100$ the "$+ 1$" part is often being ignored to simplify calculations.
-\end{document}

@@ -37,4 +37,73 @@
 	For small signals $Z_\out = \frac{v_E}{i_E} = \frac{v_B}{i_E}$. Thus:
 	\[ \sol{Z_\out = \frac{v_B}{(\beta + 1)\frac{v_B}{Z_{source}}} = \frac{Z_{source}}{\beta +1}}\qquad q.e.d.\]
 	Note: In practice one will often see $Z_\out \approx \frac{Z_{source}}{\beta}$. When $\beta \approx 100$ the "$+ 1$" part is often being ignored to simplify calculations.
+
+\ex{2.5}
+	
+	\begin{schematic}{fig:2.5.1}{Follower driven by voltage divider}
+		(0,-1) node[ground](GND1){}
+		(GND1) to[R=$R_2$] (0,2)
+		to[R=$R_1$] (0,4)
+		(0,4) node[vcc] {$+15\V$}
+		
+		(3,2) node[npn] (Q1) {Q}
+		(0,2) to[short] (Q1.B)
+		(3,2) node[npn] (Q1) {Q}
+		(3,4) node[vcc] {$+15\V$}
+		(3,4) to[short] (Q1.C)
+		(3,-1) node[ground](GND2){}
+		(Q1.E) to[R=$R_E$] (GND2)
+		(Q1.E) to[short, -o] ++(2,0) node[right]{$+5\V$}
+		(Q1.B) node[above]{$5.6\V$}
+	\end{schematic}
+	
+	We can simplify the voltage divider with it equivalent Th\'evenin voltage source depicted in Figure~\ref{fig:2.5.2} below.
+	
+	\begin{schematic}{fig:2.5.2}{Follower driven by equivalent Th\'evenin source}
+		(0,-1) node[ground](GND1){}
+		(GND1) to[V, l=$V_\Th$, a={$+5.6\V$}, invert] (0,2) 
+       
+		(3,2) node[npn] (Q1) {Q}
+		(0,2) to[R=$R_\Th$] (Q1.B)
+		(3,4) node[vcc] {$+15\V$}
+		(3,4) to[short] (Q1.C)
+		(3,-1) node[ground](GND2){}
+		(Q1.E) to[R=$R_E$] (GND2)
+		(Q1.E) to[short, -o] ++(2,0) node[right]{$+5\V$}
+	\end{schematic}
+	
+	With $R_\Th = R_1||R_2$ which is also our $R_{source}$. The output impedance of our circuit then is  
+	\[R_\out=\frac{R_\Th}{\beta + 1} \approx \frac{R_\Th}{100} = \frac{R_1||R_2}{100}\qquad(\text{assuming}~\beta \approx 100)\]
+	 
+	We also know that the following condition needs to be true in order to achieve the wished $5.6\V$ at the base: 
+	\[\frac{R_2}{R_1 + R_2} = \frac{5.6\V}{15\V} \Rightarrow R_2 \approx 0.6 * R_1\]
+	
+	Now let's observe the equivalent circuit \emph{with} load.
+	
+	\begin{schematic}{fig:2.5.3}{Equivalent voltage source of emitter follower with load}
+		(3,-2) node[ground](GND1){}
+		(0,0) node[left]{$+5\V$}
+		to[R=$R_\out$, o-] (3,0)
+		to[short, -o] (4,0) node[right]{$V\out$}
+		(3,0) to[R=$R_L$] (GND1)
+	\end{schematic}
+	
+	Our goal is to have a maximum voltage drop of 5\% with maximum load:
+	
+	\[V_\out = \frac{R_L}{R_\out + R_L} * 5\V \geq 0.95 * 5\V\]
+	$\Rightarrow$
+	\[R_\out \leq \frac{R_L}{19} \leq \frac{\frac{4.75\V}{25\m\A}}{19} = 10\Ohm\]
+	$\Rightarrow$
+	\[\frac{R_\Th}{100} \leq 10\Ohm\]
+	$\Rightarrow$
+	\[\frac{R_1||R_2}{100} \leq 10\Ohm\]
+	$\Rightarrow$
+	\[R_1 \leq 2.7\k\Ohm~\text{and}~R_2 \leq 1.62\k\Ohm\]
+	
+	We choose the following values for $R_1$ and $R_2$:
+	\[\sol{R_1 = 2.7\k\Ohm}~\text{and}~\sol{R_2 = 1.6\k\Ohm}\]
+	
+	NOTE 1: We could have picked more conservative (smaller) values for the resistors. However, this would increase the idle power consumption.\\\\
+	NOTE 2: We could also define a value for $R_E$ i.e. to limit the quiescent current, but this is out of the scope of this exercise. Basically we see now $R_E$ as our load or put differently, our total load is $R_E||Z_{whatever-the-user-wants}$.
+	
 \end{document}
